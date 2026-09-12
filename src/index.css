@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-field text-ink font-sans;
+  }
+
+  /* Keyboard focus must stay visible everywhere. */
+  :focus-visible {
+    outline: 2px solid #2a4e8f;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-paper border border-rule;
+  }
+
+  .rule-heading {
+    @apply text-sm font-semibold text-ink pb-2 mb-3 border-b border-rule;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-micro border;
+  }
+
+  .chip-found {
+    @apply chip border-evidence/40 bg-evidence/5 text-evidence;
+  }
+
+  .chip-gap {
+    @apply chip border-gap/40 bg-gap/5 text-gap;
+  }
+
+  .chip-neutral {
+    @apply chip border-rule bg-field text-muted;
+  }
+
+  .num {
+    @apply font-mono tabular-nums;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium border transition-colors disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-paper border-ink hover:bg-focus hover:border-focus disabled:bg-rule disabled:border-rule disabled:text-muted;
+  }
+
+  .btn-quiet {
+    @apply btn bg-paper text-ink border-rule hover:border-focus hover:text-focus;
+  }
+}
